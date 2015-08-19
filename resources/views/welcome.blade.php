@@ -1,45 +1,36 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Laravel</title>
-
-        <link href="//fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
-        <style>
-            html, body {
-                height: 100%;
-            }
-
-            body {
-                margin: 0;
-                padding: 0;
-                width: 100%;
-                display: table;
-                font-weight: 100;
-                font-family: 'Lato';
-            }
-
-            .container {
-                text-align: center;
-                display: table-cell;
-                vertical-align: middle;
-            }
-
-            .content {
-                text-align: center;
-                display: inline-block;
-            }
-
-            .title {
-                font-size: 96px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="content">
-                <div class="title">Laravel 5</div>
-            </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Webminar Presenter</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Bem vindo ao mundo Presenter!</h1>
+        <table class="table table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Criação</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($products as $product)
+                <tr>
+                    <td>{!! $product->name !!}</td>
+                    <td>{!! $product->present()->shortDescription(250) !!}</td>
+                    <td>{!! $product->present()->createdAt !!}</td>
+                    <td>{!! $product->present()->status !!}</td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        <div class="text-center">
+            {!! $products->render() !!}
         </div>
-    </body>
+    </div>
+</body>
 </html>
